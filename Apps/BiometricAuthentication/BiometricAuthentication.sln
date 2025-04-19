@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiometricAuthentication", "BiometricAuthentication\BiometricAuthentication.csproj", "{73E87C16-A7B2-445A-9302-FEDC4AC8CB46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73E87C16-A7B2-445A-9302-FEDC4AC8CB46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73E87C16-A7B2-445A-9302-FEDC4AC8CB46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73E87C16-A7B2-445A-9302-FEDC4AC8CB46}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{73E87C16-A7B2-445A-9302-FEDC4AC8CB46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73E87C16-A7B2-445A-9302-FEDC4AC8CB46}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3532EAE1-C6E1-4821-8475-A7D1BC53694C}
+	EndGlobalSection
+EndGlobal

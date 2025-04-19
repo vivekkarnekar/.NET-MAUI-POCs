@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BiometricAuthentication.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:BiometricAuthentication.ViewModels"
+    Padding="16"
+    x:DataType="vm:LoginPageViewModel">
+
+    <Grid
+        HorizontalOptions="Fill"
+        RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+        RowSpacing="16"
+        VerticalOptions="Center">
+        <Label
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="Welcome to Authentication!" />
+        <Label
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            Text="Using Plugin.Maui.Biometric" />
+        <Button
+            Grid.Row="2"
+            Command="{Binding LoginCommand}"
+            CommandParameter="Biometric"
+            Text="Login" />
+        <Label
+            Grid.Row="3"
+            HorizontalOptions="Center"
+            Text="Using Plugin.Fingerprint" />
+        <Button
+            Grid.Row="4"
+            Command="{Binding LoginCommand}"
+            CommandParameter="Fingerprint"
+            Text="Login" />
+    </Grid>
+</ContentPage>
