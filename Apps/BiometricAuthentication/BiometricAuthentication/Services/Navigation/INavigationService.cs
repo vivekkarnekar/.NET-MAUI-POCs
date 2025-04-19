@@ -4,6 +4,5 @@
     {
         Task GoBackAsync(IDictionary<string, object>? routeParameters = null);
         Task NavigateToAsync(string route, IDictionary<string, object>? routeParameters = null);
-        Task NavigateToPageAsync(string route, IDictionary<string, object>? routeParameters = null);
     }
 }

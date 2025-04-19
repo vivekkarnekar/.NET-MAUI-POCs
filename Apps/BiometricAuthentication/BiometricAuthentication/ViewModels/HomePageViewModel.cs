@@ -12,11 +12,7 @@
         [RelayCommand]
         public async Task Logout()
         {
-            var userInput = await AppShell.Current.DisplayAlert("Logout", "Are you sure you want to logout?", "Yes", "No");
-            if (userInput)
-            {
-                await Shell.Current.GoToAsync(nameof(LoginPage));
-            }
+            await _navigationService.NavigateToAsync($"//Login");
         }
     }
 }

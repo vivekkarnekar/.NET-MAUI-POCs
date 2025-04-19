@@ -12,10 +12,6 @@
             HorizontalOptions="Center"
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" />
-        <Button
-            BackgroundColor="Red"
-            Command="{Binding LogoutCommand}"
-            Text="Logout"
-            VerticalOptions="End" />
+        <Button Command="{Binding LogoutCommand}" Style="{StaticResource LogoutButtonStyle}" />
     </Grid>
 </ContentPage>

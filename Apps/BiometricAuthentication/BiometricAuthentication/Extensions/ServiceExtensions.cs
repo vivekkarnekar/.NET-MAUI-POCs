@@ -1,4 +1,6 @@
-﻿namespace BiometricAuthentication.Extensions
+﻿using Plugin.Fingerprint;
+
+namespace BiometricAuthentication.Extensions
 {
     internal static class ServiceExtensions
     {
@@ -10,6 +12,10 @@
         public static void RegisterServices(this IServiceCollection services)
         {
             // register other services here
+#if ANDROID
+            CrossFingerprint.SetCurrentActivityResolver(() => Platform.CurrentActivity);
+#endif
+            services.AddSingleton(CrossFingerprint.Current);
         }
 
         public static void RegisterViewModels(this IServiceCollection services)
