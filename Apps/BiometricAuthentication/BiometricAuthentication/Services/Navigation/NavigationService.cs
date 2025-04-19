@@ -5,8 +5,8 @@
         public Task GoBackAsync(IDictionary<string, object>? routeParameters = null)
         {
             return routeParameters != null
-                ? Shell.Current.GoToAsync("..", routeParameters)
-                : Shell.Current.GoToAsync("..");
+                ? Shell.Current.GoToAsync("..", true, routeParameters)
+                : Shell.Current.GoToAsync("..", true);
         }
 
         public Task NavigateToAsync(string route, IDictionary<string, object>? routeParameters = null)
