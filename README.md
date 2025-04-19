@@ -18,7 +18,8 @@ These POCs are intended for developers exploring .NET MAUI and looking for clean
 
 ## 📁 Samples Included
 
-### 1. `POC-Biometric-Authentication`
+### 1. `MAUI-Skeleton`
+### 2. `POC-Biometric-Authentication`
 A simple login screen demonstrating two-way binding, command handling, and ViewModel validation using `ObservableProperty` and `RelayCommand`.
 
 ---
