@@ -5,13 +5,11 @@ namespace BiometricAuthentication.ViewModels
 {
     public partial class LoginPageViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
         private readonly IBiometric _biometric;
         private readonly IFingerprint _fingerprint;
 
-        public LoginPageViewModel(INavigationService NavigationService, IFingerprint fingerprint) : base(NavigationService)
+        public LoginPageViewModel(INavigationService navigationService, IFingerprint fingerprint) : base(navigationService)
         {
-            _navigationService = NavigationService;
             _biometric = BiometricAuthenticationService.Default;
             _fingerprint = fingerprint;
         }
@@ -64,7 +62,7 @@ namespace BiometricAuthentication.ViewModels
 
                 if (result.Authenticated)
                 {
-                    await _navigationService.NavigateToAsync("//HomePage");
+                    await NavigationService.NavigateToAsync("//HomePage");
                 }
                 else
                 {
@@ -85,7 +83,7 @@ namespace BiometricAuthentication.ViewModels
 
             if (result.Status == BiometricResponseStatus.Success)
             {
-                await _navigationService.NavigateToAsync("//HomePage");
+                await NavigationService.NavigateToAsync("//HomePage");
             }
             else
             {
