@@ -7,11 +7,13 @@ namespace BiometricAuthentication.ViewModels
     {
         private readonly IBiometric _biometric;
         private readonly IFingerprint _fingerprint;
+        private readonly IAuthenticationService _authenticationService;
 
-        public LoginPageViewModel(INavigationService navigationService, IFingerprint fingerprint) : base(navigationService)
+        public LoginPageViewModel(INavigationService navigationService, IFingerprint fingerprint, IAuthenticationService authenticationService) : base(navigationService)
         {
             _biometric = BiometricAuthenticationService.Default;
             _fingerprint = fingerprint;
+            _authenticationService = authenticationService;
         }
 
         [RelayCommand]
@@ -21,9 +23,13 @@ namespace BiometricAuthentication.ViewModels
             {
                 await AuthenticateWithBiometric();
             }
-            else
+            else if (plugin == "Fingerprint")
             {
                 await AuthenticateWithFingerprint();
+            }
+            else
+            {
+                await AuthenticateUsingNativeAPIs();
             }
         }
 
@@ -36,11 +42,20 @@ namespace BiometricAuthentication.ViewModels
                 Console.WriteLine($"Enrolled Biometric Type: {type}");
             }
 
-            var result = await _biometric.GetAuthenticationStatusAsync();
+            var result = await _biometric.GetAuthenticationStatusAsync(authStrength: AuthenticatorStrength.Strong);
 
             if (result == BiometricHwStatus.Success)
             {
-                await AuthenticateUser();
+                var auth = await _biometric.AuthenticateAsync(new AuthenticationRequest()
+                {
+                    Title = "Please authenticate to login",
+                    Subtitle = "Use your fingerprint or face ID",
+                    NegativeText = "Cancel",
+                    AuthStrength = AuthenticatorStrength.Strong,
+                    AllowPasswordAuth = true,
+                }, CancellationToken.None);
+
+                await NavigateToHomePage(auth.Status == BiometricResponseStatus.Success);
             }
         }
 
@@ -60,28 +75,19 @@ namespace BiometricAuthentication.ViewModels
 
                 var result = await _fingerprint.AuthenticateAsync(request);
 
-                if (result.Authenticated)
-                {
-                    await NavigationService.NavigateToAsync("//HomePage");
-                }
-                else
-                {
-                    await AppShell.Current.DisplayAlert("Authentication Failed", "Please try again.", "OK");
-                }
+                await NavigateToHomePage(result.Authenticated);
             }
         }
 
-        private async Task AuthenticateUser()
+        private async Task AuthenticateUsingNativeAPIs()
         {
-            var result = await _biometric.AuthenticateAsync(new AuthenticationRequest()
-            {
-                Title = "Please authenticate to login",
-                Subtitle = "Use your fingerprint or face ID",
-                NegativeText = "Cancel",
-                AllowPasswordAuth = true,
-            }, CancellationToken.None);
+            bool isAuthenticated = await _authenticationService.AuthenticateAsync("Use your fingerprint or face ID");
+            await NavigateToHomePage(isAuthenticated);
+        }
 
-            if (result.Status == BiometricResponseStatus.Success)
+        private async Task NavigateToHomePage(bool isAuthSuccess)
+        {
+            if (isAuthSuccess)
             {
                 await NavigationService.NavigateToAsync("//HomePage");
             }
@@ -90,6 +96,5 @@ namespace BiometricAuthentication.ViewModels
                 await AppShell.Current.DisplayAlert("Authentication Failed", "Please try again.", "OK");
             }
         }
-
     }
 }

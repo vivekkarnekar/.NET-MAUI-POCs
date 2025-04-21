@@ -12,8 +12,12 @@ namespace BiometricAuthentication.Extensions
         public static void RegisterServices(this IServiceCollection services)
         {
             // register other services here
+#if IOS
+            services.AddSingleton<IAuthenticationService, Platforms.AuthenticationService>();
+#endif
 #if ANDROID
             CrossFingerprint.SetCurrentActivityResolver(() => Platform.CurrentActivity);
+            services.AddSingleton<IAuthenticationService, Platforms.AuthenticationService>();
 #endif
             services.AddSingleton(CrossFingerprint.Current);
         }

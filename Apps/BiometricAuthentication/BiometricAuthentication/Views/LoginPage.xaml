@@ -10,7 +10,7 @@
 
     <Grid
         HorizontalOptions="Fill"
-        RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
         RowSpacing="16"
         VerticalOptions="Center">
         <Label
@@ -35,6 +35,15 @@
             Grid.Row="4"
             Command="{Binding LoginCommand}"
             CommandParameter="Fingerprint"
+            Text="Login" />
+        <Label
+            Grid.Row="5"
+            HorizontalOptions="Center"
+            Text="Using Native APIs" />
+        <Button
+            Grid.Row="6"
+            Command="{Binding LoginCommand}"
+            CommandParameter="Native"
             Text="Login" />
     </Grid>
 </ContentPage>
