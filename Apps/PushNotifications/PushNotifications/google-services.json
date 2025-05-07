@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "763595163313",
+    "project_id": "mauipushnotifications-2fbca",
+    "storage_bucket": "mauipushnotifications-2fbca.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763595163313:android:653232d9b303c237b60490",
+        "android_client_info": {
+          "package_name": "com.companyname.pushnotifications"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbquL07OybBmEhOe_yP-lIlpE8I7e0E1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

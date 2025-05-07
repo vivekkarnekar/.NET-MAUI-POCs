@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="PushNotifications.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PushNotifications"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:PushNotifications.Views"
+    Title="PushNotifications"
+    Shell.FlyoutBehavior="Disabled">
+
+    <Shell.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="SlateGray" StatusBarStyle="LightContent" />
+    </Shell.Behaviors>
+
+    <TabBar
+        Shell.BackgroundColor="SlateGray"
+        Shell.TabBarBackgroundColor="SlateGray"
+        Shell.TabBarForegroundColor="Black"
+        Shell.TabBarTitleColor="White"
+        Shell.TabBarUnselectedColor="Black"
+        Shell.TitleColor="White">
+        <Tab Title="Main" Route="MainPage">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Home" Route="HomePage">
+            <ShellContent ContentTemplate="{DataTemplate views:HomePage}" />
+        </Tab>
+    </TabBar>
+
+</Shell>
